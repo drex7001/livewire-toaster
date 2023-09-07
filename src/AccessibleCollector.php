@@ -3,7 +3,7 @@
 namespace Masmerise\Toaster;
 
 /** @internal */
-final readonly class AccessibleCollector implements Collector
+final class AccessibleCollector implements Collector
 {
     private const AMOUNT_OF_WORDS = 100;
     private const ONE_SECOND = 1000;

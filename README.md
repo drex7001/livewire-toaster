@@ -9,7 +9,7 @@
 **Toaster** provides a seamless experience to display toast notifications in your Livewire powered Laravel apps.
 
 Unlike many other toast implementations that are available, Toaster makes it effortless to dispatch a toast notification
-from either a standard `Controller` or a Livewire `Component`. You don't have to think about "flashing" things to the 
+from either a standard `Controller` or a Livewire `Component`. You don't have to think about "flashing" things to the
 session or "dispatching browser events" from your Livewire components. Just dispatch your toast and Toaster will route the message accordingly.
 
 ## Showcase
@@ -135,7 +135,7 @@ import '../../vendor/masmerise/livewire-toaster/resources/js'; // 👈
 
 > **Note** Skip this step if you're going to customize Toaster's default view.
 
-Toaster provides a minimal view that utilizes Tailwind CSS defaults. 
+Toaster provides a minimal view that utilizes Tailwind CSS defaults.
 
 If the default toast appearances suffice your needs, you'll need to register it with Tailwind's purge list:
 
@@ -183,9 +183,9 @@ final class RegistrationForm extends Component
     public function submit(): void
     {
         $this->validate();
-        
+
         User::create($this->form);
-        
+
         Toaster::success('User created!'); // 👈
     }
 }
@@ -201,9 +201,9 @@ final class RegistrationForm extends Component
     public function submit(): void
     {
         $this->validate();
-        
+
         $user = User::create($this->form);
-        
+
         // 👇
         PendingToast::create()
             ->when($user->isAdmin(),
@@ -233,7 +233,7 @@ final class ProductListing extends Component
         $result = Product::query()
             ->tap(new Available())
             ->count();
-            
+
         if ($result < 5) {
             $this->warning('The quantity on hand is critically low.'); // 👈
         }
@@ -253,14 +253,14 @@ final class CompanyController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validator = Validator::make($request->all(), [...]);
-        
+
         if ($validator->fails()) {
             return Redirect::back()
                 ->error('The form contains several errors'); // 👈
         }
-    
+
         Company::create($validator->validate());
-        
+
         return Redirect::route('dashboard')
             ->info('Company created!'); // 👈
     }
@@ -271,7 +271,7 @@ This is, of course, **not** limited to `Controller`s as you can also redirect in
 
 #### Dependency injection
 
-If you'd like to keep things "pure", you can also inject the `Collector` contract 
+If you'd like to keep things "pure", you can also inject the `Collector` contract
 and use the `ToastBuilder` to dispatch your toasts:
 
 ```php
@@ -279,13 +279,13 @@ use Masmerise\Toaster\Collector;
 use Masmerise\Toaster\ToasterConfig;
 use Masmerise\Toaster\ToastBuilder;
 
-final readonly class SendEmailVerifiedNotification
+final class SendEmailVerifiedNotification
 {
     public function __construct(
         private ToasterConfig $config,
         private Collector $toasts,
     ) {}
-    
+
     public function handle(Verified $event): void
     {
         $toast = ToastBuilder::create()
@@ -293,7 +293,7 @@ final readonly class SendEmailVerifiedNotification
             ->success()
             ->message("Thank you, {$event->user->name}!")
             ->get();
-            
+
         $this->toasts->collect($toast);
     }
 }
@@ -345,8 +345,8 @@ You can do whatever you want, whenever you want.
 Toaster will add an additional second to a toast's on-screen duration for every 100th word.
 This way, your users will have enough time to read toasts that are a tad larger than usual.
 
-So, if your base duration value is `3 seconds` and your toast contains 223 words, 
-the total on-screen duration of the toast will be `3 + 2 = 5 seconds`  
+So, if your base duration value is `3 seconds` and your toast contains 223 words,
+the total on-screen duration of the toast will be `3 + 2 = 5 seconds`
 
 ### Unit testing
 
@@ -366,10 +366,10 @@ final class RegisterUserControllerTest extends TestCase
         // Arrange
         Toaster::fake();
         Toaster::assertNothingDispatched();
-        
+
         // Act
         $response = $this->post('users', [ ... ]);
-        
+
         // Assert
         $response->assertRedirect('profile');
         Toaster::assertDispatched('Welcome!');
@@ -390,7 +390,7 @@ You can do so by publishing Toaster's views:
 php artisan vendor:publish --tag=toaster-views
 ```
 
-The `hub.blade.php` view will be published to your application's `resources/views/vendor/toaster` directory. 
+The `hub.blade.php` view will be published to your application's `resources/views/vendor/toaster` directory.
 Feel free to modify anything to your liking.
 
 ### Available `viewData`

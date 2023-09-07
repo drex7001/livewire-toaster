@@ -9,7 +9,7 @@ use Livewire\Mechanisms\DataStore;
 use Livewire\Mechanisms\HandleComponents\ComponentContext;
 
 /** @internal */
-final readonly class LivewireRelay
+final class LivewireRelay
 {
     public const EVENT = 'toaster:received';
 

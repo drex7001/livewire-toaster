@@ -5,7 +5,7 @@ namespace Masmerise\Toaster;
 use InvalidArgumentException;
 
 /** @internal */
-final readonly class Duration
+final class Duration
 {
     private const MINIMUM = 3000;
 

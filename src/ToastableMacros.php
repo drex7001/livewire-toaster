@@ -5,7 +5,7 @@ namespace Masmerise\Toaster;
 use Closure;
 
 /** @internal */
-final readonly class ToastableMacros
+final class ToastableMacros
 {
     protected function error(): Closure
     {

@@ -5,7 +5,7 @@ namespace Masmerise\Toaster;
 use Illuminate\Contracts\Translation\Translator;
 
 /** @internal */
-final readonly class TranslatingCollector implements Collector
+final class TranslatingCollector implements Collector
 {
     public function __construct(
         private Collector $next,

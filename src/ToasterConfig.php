@@ -5,7 +5,7 @@ namespace Masmerise\Toaster;
 use Illuminate\Support\Arr;
 
 /** @internal */
-final readonly class ToasterConfig
+final class ToasterConfig
 {
     private function __construct(
         public string $alignment,

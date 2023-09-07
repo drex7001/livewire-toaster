@@ -4,7 +4,7 @@ namespace Masmerise\Toaster;
 
 use Illuminate\Contracts\Support\Arrayable;
 
-final readonly class Toast implements Arrayable
+final class Toast implements Arrayable
 {
     public function __construct(
         public Message $message,

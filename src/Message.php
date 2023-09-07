@@ -5,7 +5,7 @@ namespace Masmerise\Toaster;
 use InvalidArgumentException;
 
 /** @internal */
-final readonly class Message
+final class Message
 {
     public array $replace;
 

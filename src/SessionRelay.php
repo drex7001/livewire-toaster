@@ -8,7 +8,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 /** @internal */
-final readonly class SessionRelay
+final class SessionRelay
 {
     public const NAME = 'toasts';
 
